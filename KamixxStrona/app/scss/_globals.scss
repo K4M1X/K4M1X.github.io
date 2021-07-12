@@ -1,0 +1,273 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  // font-family: "Public Sans", sans-serif;
+  font-family: "Rubik", sans-serif;
+  font-size: $font-sm;
+  font-weight: 400;
+  color: $grayishBlue;
+  line-height: 1.3;
+  overflow-x: hidden;
+
+  &.noscroll {
+    overflow: hidden;
+  }
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #f90;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+// Text
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.15;
+  color: $grayishBlue;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 2.31rem;
+  margin-bottom: 0.25rem; // zmienione na potrzeby sekcji hero
+}
+
+h2 {
+  font-size: 1.875rem;
+  margin-bottom: 1.5625rem;
+}
+
+.title-cm {
+  @include breakpoint-down(small) {
+    text-align: center;
+  }
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 2.25rem;
+  font-weight: 400;
+  font-size: $font-sm;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+// Spacing
+.container {
+  padding: 0 1.5rem;
+  max-width: calc(1115px + 1.5rem);
+  margin: 0 auto;
+  width: 100%;
+
+  @include breakpoint-down(tiny) {
+    padding: 0 0.5rem;
+  }
+
+  @include breakpoint-down(small) {
+    padding: 0 0.7rem;
+  }
+
+  &-2c {
+    @include breakpoint-up(large) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-pall {
+    padding-top: 4.375rem;
+    padding-right: 1.5rem;
+    padding-bottom: 4.375rem;
+    padding-left: 1.5rem;
+
+    @include breakpoint-down(small) {
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+
+    // @include breakpoint-down(small) {
+    //   padding-left: 0.5rem;
+    //   padding-right: 0.5rem;
+    // }
+  }
+  &-py {
+    padding-top: 4.375rem;
+    padding-bottom: 4.375rem;
+  }
+  &-px {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  &-pt {
+    padding-top: 4.375rem;
+  }
+  &-pts {
+    padding-top: 2.375rem;
+  }
+  &-pr {
+    padding-right: 1.5rem;
+  }
+  &-pb {
+    padding-bottom: 4.375rem;
+  }
+  &-pbs {
+    padding-bottom: 2.375rem;
+  }
+  &-pl {
+    padding-left: 1.5rem;
+  }
+}
+
+// Flexbox
+.flex {
+  display: flex;
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  &-ai-c {
+    align-items: center;
+  }
+}
+
+// Buttons
+button,
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.875rem 2.1875rem;
+  // background-image: linear-gradient(to right, $limeGreen, $brightCyan);
+  background: orange;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  color: $white;
+  font-weight: 400;
+  font-size: $font-med;
+  transition: opacity 300ms ease-in-out;
+  overflow: hidden;
+  z-index: 5;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.25);
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+// Visibility
+.hide-for-mobile {
+  @include breakpoint-down(large) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}
+
+//gradient and blue-section
+.gradient-blue {
+  background-color: $kamixMain;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from($kamixMain),
+    to(#000000)
+  );
+  background-image: -webkit-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: -moz-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: -ms-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: -o-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: linear-gradient(135deg, $kamixMain, #000000);
+  background-size: 100%;
+}
+
+.gradient-blue-footer {
+  background-color: $kamixMain;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#0a3e92),
+    to(#007ebe)
+  );
+  background-image: -webkit-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: -moz-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: -ms-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: -o-linear-gradient(135deg, $kamixMain, #000000);
+  background-image: linear-gradient(135deg, $kamixMain, #000000);
+  background-size: 100%;
+}
+
+.text-gradient {
+  background-color: $kamixMain; // fallback color
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
